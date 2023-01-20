@@ -1,0 +1,18 @@
+{
+  "name": "comp229-w2023-week2",
+  "version": "0.0.1",
+  "description": "this is my application for week2",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  },
+  "keywords": [
+    "comp229",
+    "w2023"
+  ],
+  "author": "Aqeish Parvez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
