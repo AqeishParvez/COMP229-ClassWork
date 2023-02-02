@@ -2,9 +2,9 @@
   "name": "comp229-w2023-week2",
   "version": "0.0.1",
   "description": "this is my application for week2",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start" : "node index.js"
+    "start" : "node server.js"
   },
   "keywords": [
     "comp229",
