@@ -4,7 +4,7 @@
   "description": "this is my application for week2",
   "main": "server.js",
   "scripts": {
-    "start" : "node server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "comp229",
@@ -13,6 +13,7 @@
   "author": "Aqeish Parvez",
   "license": "ISC",
   "dependencies": {
+    "connect": "^3.7.0",
     "express": "^4.18.2"
   }
 }
