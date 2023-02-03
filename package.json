@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "this is my application for week2",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
     "comp229",
@@ -13,7 +14,12 @@
   "author": "Aqeish Parvez",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "connect": "^3.7.0",
-    "express": "^4.18.2"
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0"
   }
 }
