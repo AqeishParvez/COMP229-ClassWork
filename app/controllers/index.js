@@ -1,3 +1,4 @@
+//File Name: index.js, Student Name: Aqeish Parvez, Student ID: 301225795, Date: February 4th, 2023
 //Index Controller
 
 
@@ -20,3 +21,4 @@ export function displayProjectsPage(req, res, next){
 export function displayServicesPage(req, res, next){
     res.render('index', {title: 'Services', page: 'services'});
 }
+
