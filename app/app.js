@@ -35,6 +35,7 @@ import { Secret, MongoURI } from '../config/index.js';
 
 //Import Routes
 import indexRouter from '../app/routes/index.js';
+import moviesRouter from '../app/routes/movies.js';
 
 //Complete database configuration
 mongoose.connect(MongoURI);
@@ -70,7 +71,7 @@ app.use(session({
 
 //Use Routes
 app.use('/', indexRouter);
-app.use('/', indexRouter);
+app.use('/', moviesRouter);
 
 
 

@@ -9,6 +9,8 @@ export function DisplayMoviesList(req, res, next){
             res.end(error);
         }
 
+        console.log(movieCollection);
+
         res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection})
     })
 }
