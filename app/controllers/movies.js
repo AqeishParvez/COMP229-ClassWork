@@ -11,14 +11,14 @@ export function DisplayMoviesList(req, res, next){
 
         console.log(movieCollection);
 
-        res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection})
+        res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection, displayName: UserDisplayName(req)})
     })
 }
 
 
 //C reate operations
 export function DisplayMoviesAddPage(req, res, next){
-    res.render('index', {title: 'Add Movie', page: 'movies/edit', movie: {}})
+    res.render('index', {title: 'Add Movie', page: 'movies/edit', movie: {}, displayName: UserDisplayName(req)})
 }
 
 export function ProcessMoviesAddPage(req, res, next){
@@ -52,7 +52,7 @@ export function DisplayMoviesEditPage(req, res, next){
             res.end(error);
         }
 
-        res.render('index', {title: 'Edit Movie', page: 'movies/edit', movie})
+        res.render('index', {title: 'Edit Movie', page: 'movies/edit', movie, displayName: UserDisplayName(req)})
     })
     
 }

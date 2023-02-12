@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link <%= (page=='home') ? 'active' : '' %>" aria-current="page" href="/home">Home</a>
           </li>
@@ -26,6 +26,16 @@
           <li class="nav-item">
             <a class="nav-link <%= (page=='movies/list') ? 'active' : '' %>" aria-current="services" href="/movie-list">Movie List</a>
           </li>
+
+          <% if(displayName) { %>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">Logout</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a href="/login" class="nav-link">Login</a>
+          </li>
+          <% } %>
           
         </ul>
       </div>
