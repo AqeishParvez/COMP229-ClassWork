@@ -59,5 +59,5 @@ function onListening(){
     let addr = server.address();
     let bind = 'pipe ' + addr;
     debug('Listening on '+ bind);
-    console.log('Listening on ', addr);
+    console.log('Application launched successfully');
 }

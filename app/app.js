@@ -42,7 +42,7 @@ mongoose.connect(MongoURI);
 const db = mongoose.connection;
 
 //Database Listeners
-db.on('open', () => console.log(`Connected to MongoDB at ${MongoURI} `));
+db.on('open', () => console.log(`Connected to MongoDB`));
 db.on('error', () => console.log("Mongo Connection Error"));
 
 //Instantiate the express application
