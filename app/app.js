@@ -47,6 +47,7 @@ import { Secret, MongoURI } from '../config/index.js';
 //Import Routes
 import indexRouter from '../app/routes/index.js';
 import moviesRouter from '../app/routes/movies.js';
+import businessContactsRouter from '../app/routes/businesscontacts.js';
 import authRouter from '../app/routes/auth.js';
 
 //Complete database configuration
@@ -98,8 +99,7 @@ passport.deserializeUser(User.deserializeUser());
 //Use Routes
 app.use('/', indexRouter);
 app.use('/', moviesRouter);
+app.use('/', businessContactsRouter);
 app.use('/', authRouter);
-
-
 
 export default app;
