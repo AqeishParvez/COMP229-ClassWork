@@ -1,4 +1,5 @@
 import businessContactsModel from '../models/businesscontacts.js';
+import { UserDisplayName } from "../utils/index.js";
 
 
 //R ead operations
@@ -18,7 +19,7 @@ export function DisplayContactList(req, res, next){
 
 //C reate operations
 export function DisplayContactsAddPage(req, res, next){
-    res.render('index', {title: 'Add Contact', page: 'businesscontacts/edit', businesscontacts: {}, displayName: UserDisplayName(req)})
+    res.render('index', {title: 'Add Contact', page: 'businesscontacts/edit', businesscontact: {}, displayName: UserDisplayName(req)})
 }
 
 export function ProcessContactsAddPage(req, res, next){
@@ -33,7 +34,7 @@ export function ProcessContactsAddPage(req, res, next){
         email: req.body.email,
     });
 
-    businessContactsModel.create(newContact, function(error, BusinessContact){
+    businessContactsModel.create(newContact, function(error, businesscontact){
         if(error){
             console.error(error);
             res.end(error);

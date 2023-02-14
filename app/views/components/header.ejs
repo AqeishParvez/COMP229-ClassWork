@@ -21,10 +21,13 @@
             <a class="nav-link <%= (page=='projects') ? 'active' : '' %>" aria-current="page" href="/projects">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <%= (page=='services') ? 'active' : '' %>" aria-current="services" href="/services">Services</a>
+            <a class="nav-link <%= (page=='services') ? 'active' : '' %>" aria-current="page" href="/services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <%= (page=='movies/list') ? 'active' : '' %>" aria-current="services" href="/movie-list">Movie List</a>
+            <a class="nav-link <%= (page=='movies/list') ? 'active' : '' %>" aria-current="page" href="/movie-list">Movie List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= (page=='businesscontacts/list') ? 'active' : '' %>" aria-current="page" href="/business-contact-list">Business Contacts</a>
           </li>
 
           <% if(displayName) { %>
