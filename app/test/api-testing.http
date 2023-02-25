@@ -1,0 +1,72 @@
+
+# Auth API
+POST  http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "displayName": "Miki Schumacher",
+    "password": "123456",
+    "username": "mischumacher",
+    "emailAddress": "mischumacher@f1.com"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": "123456",
+    "username": "mischumacher"
+}
+
+###
+
+GET  http://localhost:3000/api/auth/logout HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Movies API
+
+GET http://localhost:3000/api/movies/list HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+
+###
+
+GET http://localhost:3000/api/movies/63e93f0f2931f790dac55deb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+
+###
+POST http://localhost:3000/api/movies/add HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+
+{
+    "name": "Toy Story 3",
+    "year": "2020",
+    "director": "Mr. Nobody",
+    "genre": "Animated",
+    "runtime": 500
+}
+
+
+###
+PUT http://localhost:3000/api/movies/edit/63f98e8b7f00f4865870e6d3 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+
+{
+    "name": "Toy Story 2",
+    "year": "2020",
+    "director": "Mr. Nobody",
+    "genre": "Animated",
+    "runtime": 120
+}
+
+###
+DELETE http://localhost:3000/api/movies/delete/63f98e8b7f00f4865870e6d3 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE

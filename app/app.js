@@ -35,6 +35,12 @@ import flash from 'connect-flash';
 // Auth step 2 - define auth strategy
 let localStrategy = passportLocal.Strategy;
 
+import cors from 'cors';
+import passportJWT from 'passport-jwt';
+
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
 // Auth Step 3 - import the user model
 import User from './models/user.js';
 
@@ -49,6 +55,10 @@ import indexRouter from '../app/routes/index.js';
 import moviesRouter from '../app/routes/movies.js';
 import businessContactsRouter from '../app/routes/businesscontacts.js';
 import authRouter from '../app/routes/auth.js';
+
+//Import API Routes
+import authAPIRouter from '../app/routes/api/auth-api.js';
+import moviesApiRouter from '../app/routes/api/movies-api.js'
 
 //Complete database configuration
 mongoose.connect(MongoURI);
@@ -75,6 +85,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use(cors()); //to be used with Angular
+
 //Auth step 4 - Setup Express Session
 app.use(session({
     secret: Secret,
@@ -96,10 +108,33 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//Auth step 9 - Enable JWT
+let jwtOption = {
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: Secret
+}
+
+//JWT Passport Strategy
+let strategy = new JWTStrategy(jwtOption, (jwt_payLoad, done) => {
+    User.findById(jwt_payLoad.id)
+        .then(user => {
+            return done(null, user)
+        })
+        .catch(err => {
+            return done(err, false);
+        });
+})
+
+passport.use(strategy);
+
 //Use Routes
 app.use('/', indexRouter);
 app.use('/', moviesRouter);
 app.use('/', businessContactsRouter);
 app.use('/', authRouter);
+
+//Enable API Routes
+app.use('/api/auth', authAPIRouter);
+app.use('/api/movies', passport.authenticate('jwt', {success: false}), moviesApiRouter);
 
 export default app;
