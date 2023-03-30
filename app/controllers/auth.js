@@ -73,7 +73,7 @@ export function ProcessLoginPage(req, res, next){
             console.error(err);
             res.end(err);
         }
-        
+
         if(!user){
             req.flash('loginMessage', 'Authentication Error');
             return res.redirect('/login');

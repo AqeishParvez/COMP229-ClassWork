@@ -10,7 +10,7 @@ export function processLogin(req, res, next){
         }
 
         if(!user){
-            return res.json({success: false, msg: 'ERROR: Authentication Failed'});
+            return res.status(404).json({success: false, msg: 'ERROR: Authentication Failed'});
         }
 
         req.logIn(user, (err) => {
