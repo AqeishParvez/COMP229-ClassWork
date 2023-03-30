@@ -68,15 +68,17 @@ export function ProcessRegisterPage(req, res, next){
     })
 }
 export function ProcessLoginPage(req, res, next){
-    passport.authenticate('local', function (err, user, info){
+    passport.authenticate('local', function (err, user){
         if(err){
             console.error(err);
             res.end(err);
         }
-
+        
         if(!user){
-            req.flash('loginMessage', 'Authentication Error')
+            req.flash('loginMessage', 'Authentication Error');
+            return res.redirect('/login');
         }
+
 
         req.logIn(user, function(err){
             if(err){
@@ -87,6 +89,7 @@ export function ProcessLoginPage(req, res, next){
             return res.redirect('/')
 
         })
+
     })(req, res, next);
 }
 
@@ -95,6 +98,7 @@ export function ProcessLogoutPage(req, res, next){
         if(err){
             console.error(err);
             res.end(err);
+            return;
         }
 
         console.log('user successfully logged out');

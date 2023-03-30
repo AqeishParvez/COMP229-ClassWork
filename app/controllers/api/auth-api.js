@@ -33,6 +33,7 @@ export function processLogin(req, res, next){
                 token: authToken
             });
         })
+        
     })(req, res, next);
 }
 
