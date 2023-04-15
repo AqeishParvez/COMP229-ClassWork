@@ -17,6 +17,7 @@
 // console.log('Server running at http://localhost:3000');
 
 import express from 'express';
+import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import session from 'express-session';
@@ -58,7 +59,8 @@ import authRouter from '../app/routes/auth.js';
 
 //Import API Routes
 import authAPIRouter from '../app/routes/api/auth-api.js';
-import moviesApiRouter from '../app/routes/api/movies-api.js'
+import moviesApiRouter from '../app/routes/api/movies-api.js';
+import surveysApiRouter from '../app/routes/api/survey-api.js';
 
 //Complete database configuration
 mongoose.connect(MongoURI);
@@ -93,6 +95,10 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }))
+
+//Set up body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //Auth step 5 - Setup Flash
 app.use(flash());
@@ -136,5 +142,6 @@ app.use('/', authRouter);
 //Enable API Routes
 app.use('/api/auth', authAPIRouter);
 app.use('/api/movies', passport.authenticate('jwt', {success: false}), moviesApiRouter);
+app.use('/api', surveysApiRouter);
 
 export default app;

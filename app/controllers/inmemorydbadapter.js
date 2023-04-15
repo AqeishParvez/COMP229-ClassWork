@@ -1,20 +1,27 @@
-var demoData = require("./demo-surveys");
+import surveyModel from "../models/surveys.js"
 
-var currentId = demoData.surveys.length + 1;
+var currentId;
 
-function InMemoryDBAdapter(session) {
+var count = surveyModel.countDocuments({}, function(err, docCount) {
+  if (err) { return handleError(err) }
+  console.log(docCount)
+  currentId = docCount;
+  console.log(currentId);
+});
+
+function InMemoryDBAdapter() {
   function getTable(tableName) {
-    var table = session[tableName];
+    var table = surveyModel[tableName];
     if (!table) {
       table = [];
-      session[tableName] = table;
+      surveyModel[tableName] = table;
     }
     return table;
   }
 
   function getObjectsFromStorage(tableName, callback) {
     // var objects = {};
-    var table = getTable(tableName);
+    var table = surveyModel.surveys;
     callback(table);
     // table.forEach(function(item) {
     //   objects[item.name] = item;
@@ -22,19 +29,34 @@ function InMemoryDBAdapter(session) {
     // callback(objects);
   }
 
-  function findById(objects, id) {
-    return objects.filter(function (o) { return o.id === id; })[0];
+  function findById(id) {
+    var survey = surveyModel.findById(id, function (error, survey){
+      if(error){
+          console.error(error);
+          res.end(error);
+      }
+
+      console.log(survey);
+
+      //res.json({success: true, msg: 'Success', movie, user: req.user}) 
+    })
+    return survey;
   }
 
   function addSurvey(name, callback) {
-    var table = getTable("surveys");
     var newObj = {
-      id: '' + currentId++,
-      name: name || demoData.defaultName + " " + currentId,
+      name: name || "New Survey " + currentId,
       json: "{}"
     };
-    table.push(newObj);
-    callback(newObj);
+    surveyModel.create(newObj, function(error){
+      if(error){
+          console.error(error);
+          res.end(error);
+      }
+
+      //res.json({success: true, msg: 'Success', newObj, user: req.user})
+
+     });
   }
 
   function postResults(postId, json, callback) {
@@ -58,24 +80,42 @@ function InMemoryDBAdapter(session) {
   }
 
   function deleteSurvey(surveyId, callback) {
-    var table = getTable("surveys");
-    var survey = findById(table, surveyId);
-    table.splice(table.indexOf(survey), 1);
+
+    var survey = findById(surveyId);
+
+    surveyModel.deleteOne({_id: surveyId}, function(error){
+        if(error){
+            console.error(error);
+            res.end(error);
+        }
+
+        //res.json({success: true, msg: 'Delete Successful'});
+
+    })
+    
     callback(survey);
   }
 
   function storeSurvey(id, name, json, callback) {
-    var table = getTable("surveys");
-    var survey = findById(table, id);
+    var survey = findById(id);
     if (!!survey) {
       survey.json = json;
     } else {
       survey = {
-        id: id,
+        "_id": id,
         name: name || id,
         json: json
       };
-      table.push(survey);
+  
+      surveyModel.updateOne({_id: id}, survey, function(error){
+          if(error){
+              console.error(error);
+              res.end(error);
+          }
+  
+          //res.json({success: true, msg: 'Success', editMovie, user: req.user})
+  
+      });
     }
     callback && callback(survey);
   }
@@ -89,31 +129,42 @@ function InMemoryDBAdapter(session) {
     callback && callback(survey);
   }
 
+  function getSurvey(surveyId, callback){
+      var survey = findById(surveyId);
+      callback(survey);
+  }
+
   function getSurveys(callback) {
-    getObjectsFromStorage("surveys", function (objects) {
-      if (objects.length > 0) {
-        callback(objects);
-      } else {
-        var surveys = getTable("surveys");
-        demoData.surveys.forEach(function (survey) {
-          surveys.push(JSON.parse(JSON.stringify(survey)));
-        })
-        var results = getTable("results");
-        demoData.results.forEach(function (result) {
-          results.push(JSON.parse(JSON.stringify(result)));
-        })
-        getObjectsFromStorage("surveys", callback);
-      }
-    });
+
+      surveyModel.find(function (error, surveyCollection){
+        if(error){
+            console.error(error);
+            res.end(error);
+        }
+
+        console.log(surveyCollection);
+        callback(surveyCollection);
+
+        //res.json({success: true, msg: 'Success', movies: movieCollection, user: req.user})
+      })
+      // if (currentId > 0) {
+      //   callback(objects);
+      // } else {
+      //   var surveys = getTable("surveys");
+      //   surveyModel.surveys.forEach(function (survey) {
+      //     surveys.push(JSON.parse(JSON.stringify(survey)));
+      //   })
+      //   var results = getTable("results");
+      //   surveyModel.results.forEach(function (result) {
+      //     results.push(JSON.parse(JSON.stringify(result)));
+      //   })
+      //   getObjectsFromStorage("surveys", callback);
+      // }
   }
 
   return {
     addSurvey: addSurvey,
-    getSurvey: function (surveyId, callback) {
-      getSurveys(function (surveys) {
-        callback(findById(surveys, surveyId));
-      });
-    },
+    getSurvey: getSurvey,
     storeSurvey: storeSurvey,
     getSurveys: getSurveys,
     deleteSurvey: deleteSurvey,
@@ -123,4 +174,4 @@ function InMemoryDBAdapter(session) {
   };
 }
 
-module.exports = InMemoryDBAdapter;
+export default InMemoryDBAdapter;

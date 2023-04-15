@@ -629,8 +629,6 @@ const results = [{
   ]
 }];
 
-module.exports = {
-  surveys: surveys,
-  results: results,
-  defaultName: "New Survey"
-};
+const defaultName = "New Survey";
+
+export default {surveys, results, defaultName: "New Survey"};
