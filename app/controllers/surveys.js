@@ -1,98 +1,94 @@
-import movieModel from '../models/movies.js';
+import surveyModel from '../models/surveys.js';
 import { UserDisplayName } from "../utils/index.js";
 
 
 //R ead operations
-export function DisplayMoviesList(req, res, next){
-    movieModel.find(function (error, movieCollection){
+export function DisplaySurveyList(req, res, next){
+    surveyModel.find(function (error, surveyCollection){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        console.log(movieCollection);
+        console.log(surveyCollection);
 
-        res.render('index', {title: 'Movie List', page: 'movies/list', movies: movieCollection, displayName: UserDisplayName(req)})
+        res.render('index', {title: 'Survey List', page: 'surveys/list', surveys: surveyCollection, displayName: UserDisplayName(req)})
     })
 }
 
 
 //C reate operations
-export function DisplayMoviesAddPage(req, res, next){
-    res.render('index', {title: 'Add Movie', page: 'movies/edit', movie: {}, displayName: UserDisplayName(req)})
+export function DisplaySurveysAddPage(req, res, next){
+    res.render('index', {title: 'Add Survey', page: 'surveys/edit', survey: {}, displayName: UserDisplayName(req)})
 }
 
-export function ProcessMoviesAddPage(req, res, next){
-    let newMovie = movieModel({
+export function ProcessSurveysAddPage(req, res, next){
+    let newSurvey = surveyModel({
         name: req.body.name,
-        year: req.body.year,
-        director: req.body.director,
-        genre: req.body.genre,
-        runtime: req.body.runtime
+        surveyId: req.body.surveyId,
+        json: req.body.json
     });
 
-    movieModel.create(newMovie, function(error, Movie){
+    surveyModel.create(newSurvey, function(error, Survey){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        res.redirect('/movie-list');
+        res.redirect('/survey-list');
 
     })
 }
 
 //U pdate operations
-export function DisplayMoviesEditPage(req, res, next){
+export function DisplaySurveysEditPage(req, res, next){
 
     let id = req.params.id;
 
-    movieModel.findById(id, function(error, movie){
+    surveyModel.findById(id, function(error, survey){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        res.render('index', {title: 'Edit Movie', page: 'movies/edit', movie, displayName: UserDisplayName(req)})
+        res.render('index', {title: 'Edit Survey', page: 'surveys/edit', survey, displayName: UserDisplayName(req)})
     })
     
 }
 
-export function ProcessMoviesEditPage(req, res, next){
+export function ProcessSurveysEditPage(req, res, next){
 
     let id = req.params.id;
 
-    let newMovie = movieModel({
+    let newSurvey = surveyModel({
         _id: req.body.id,
         name: req.body.name,
-        year: req.body.year,
-        director: req.body.director,
-        genre: req.body.genre,
-        runtime: req.body.runtime
+        surveyId: req.body.surveyId,
+        json: req.body.json
     });
 
-    movieModel.updateOne({_id: id}, editMovie, function(error, Movie){
+    surveyModel.updateOne({_id: id}, editSurvey, function(error, Survey){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        res.redirect('/movie-list');
+        res.redirect('/survey-list');
 
     })
 }
 
 //D elete operations
-export function ProcessMoviesDelete(req, res, next){
+export function ProcessSurveysDelete(req, res, next){
     let id = req.params.id
 
-    movieModel.remove({_id: id}, function(error){
+    surveyModel.remove({_id: id}, function(error){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        res.redirect('/movie-list');
+        res.redirect('/survey-list');
 
     })
 }

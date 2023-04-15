@@ -54,6 +54,7 @@ import { Secret, MongoURI } from '../config/index.js';
 //Import Routes
 import indexRouter from '../app/routes/index.js';
 import moviesRouter from '../app/routes/movies.js';
+import surveyRouter from '../app/routes/survey.js';
 import businessContactsRouter from '../app/routes/businesscontacts.js';
 import authRouter from '../app/routes/auth.js';
 
@@ -137,11 +138,12 @@ passport.use(strategy);
 app.use('/', indexRouter);
 app.use('/', moviesRouter);
 app.use('/', businessContactsRouter);
+app.use('/', surveyRouter);
 app.use('/', authRouter);
 
 //Enable API Routes
 app.use('/api/auth', authAPIRouter);
 app.use('/api/movies', passport.authenticate('jwt', {success: false}), moviesApiRouter);
-app.use('/api', surveysApiRouter);
+app.use('/api/surveys', passport.authenticate('jwt', {success: false}), surveysApiRouter);
 
 export default app;
