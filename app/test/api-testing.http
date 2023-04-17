@@ -47,7 +47,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
 
 {
-    "name": "Toy Story 3",
+    "title": "Toy Story 3",
     "surveyId": "2020",
     "json": {}
 }

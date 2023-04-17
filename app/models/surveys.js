@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const SurveySchema = new Schema({
-    name: String,
+    title: String,
     surveyId: String,
     json: Object
 }, {
