@@ -16,7 +16,7 @@ export function GetList(req, res, next){
 }
 
 export function Get(req, res, next){
-    let id = req.params.id;
+    let id = req.params._id;
 
     movieModel.findById(id, function (error, movie){
         if(error){

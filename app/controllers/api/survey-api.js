@@ -17,7 +17,7 @@ export function GetList(req, res, next){
 }
 
 export function Get(req, res, next){
-    let id = req.params.id;
+    let id = req.params._id;
 
     surveyModel.findById(id, function (error, survey){
         if(error){
@@ -32,17 +32,18 @@ export function Get(req, res, next){
 }
 
 export function Add(req, res, next){
-    let newSurvey = movieModel({
+    console.log(req.body);
+    let newSurvey = surveyModel({
        ...req.body
     });
 
-    movieModel.create(newSurvey, function(error){
+    surveyModel.create(newSurvey, function(error){
         if(error){
             console.error(error);
             res.end(error);
         }
 
-        res.json({success: true, msg: 'Success', newMovie: newSurvey, user: req.user})
+        res.json({success: true, msg: 'Success', newSurvey, user: req.user})
 
     })
 }

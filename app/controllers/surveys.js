@@ -29,12 +29,15 @@ export function ProcessSurveysAddPage(req, res, next){
         json: req.body.json
     });
 
+    console.log(req.body);
+
     surveyModel.create(newSurvey, function(error, Survey){
         if(error){
             console.error(error);
             res.end(error);
         }
 
+        console.log(newSurvey);
         res.redirect('/survey-list');
 
     })

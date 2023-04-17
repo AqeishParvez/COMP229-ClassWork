@@ -36,20 +36,32 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjN
 
 ###
 
-GET http://localhost:3000/api/surveys/getActive HTTP/1.1
+GET http://localhost:3000/api/surveys/list HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
 
 ###
 
+POST http://localhost:3000/api/surveys/add HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
+
+{
+    "name": "Toy Story 3",
+    "surveyId": "2020",
+    "json": {}
+}
+
+###
+
 GET http://localhost:3000/api/movies/63e93f0f2931f790dac55deb HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
 
 ###
 POST http://localhost:3000/api/movies/add HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2NzczMDA1ODAsImV4cCI6MTY3NzkwNTM4MH0.pSuq_gpQdvpDLa3KvdFQDxF2mdGpyzm9TshK99YMLKE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
 
 {
     "name": "Toy Story 3",
