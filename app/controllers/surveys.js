@@ -24,12 +24,12 @@ export function DisplaySurveysAddPage(req, res, next){
 
 export function ProcessSurveysAddPage(req, res, next){
     let newSurvey = surveyModel({
-        title: req.body.title,
+        name: req.body.name,
         surveyId: req.body.surveyId,
         json: req.body.json
     });
 
-    console.log(req.body);
+    console.log(req.body)
 
     surveyModel.create(newSurvey, function(error, Survey){
         if(error){
@@ -65,7 +65,7 @@ export function ProcessSurveysEditPage(req, res, next){
 
     let newSurvey = surveyModel({
         _id: req.body.id,
-        title: req.body.title,
+        name: req.body.name,
         surveyId: req.body.surveyId,
         json: req.body.json
     });

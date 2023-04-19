@@ -3,9 +3,10 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const SurveySchema = new Schema({
-    title: String,
+    name: String,
     surveyId: String,
     json: Object
+    
 }, {
     timestamps: true,
     collection: "surveys"

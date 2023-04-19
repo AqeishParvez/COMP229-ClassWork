@@ -16,8 +16,9 @@ export function GetList(req, res, next){
     })
 }
 
-export function Get(req, res, next){
-    let id = req.params._id;
+export function Get(req, res){
+    let id = req.params.id;
+    console.log(id);
 
     surveyModel.findById(id, function (error, survey){
         if(error){
