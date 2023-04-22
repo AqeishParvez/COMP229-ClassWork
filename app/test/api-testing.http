@@ -31,25 +31,65 @@ Content-Type: application/json
 
 GET http://localhost:3000/api/movies/list HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
 
 
 ###
 
 GET http://localhost:3000/api/surveys/list HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
+
+###
+
+
+GET http://localhost:3000/api/survey-results/list HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
+
+###
+
+
+GET http://localhost:3000/api/survey-results/list/2023 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
 
 ###
 
 POST http://localhost:3000/api/surveys/add HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODE0MzYwMzgsImV4cCI6MTY4MjA0MDgzOH0.FMOXSUF1LSU9vFjkLUWQuyuUUB1bJebBNCvca84hu7o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
 
 {
     "name": "Toy Story 3",
     "surveyId": "2020",
     "json": {}
+}
+
+###
+
+POST http://localhost:3000/api/survey-results/add HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZjk4YzJjNmFiODJkZWQ2MDA2NzU5NCIsImRpc3BsYXlOYW1lIjoiTWlraSBTY2h1bWFjaGVyIiwidXNlcm5hbWUiOiJtaXNjaHVtYWNoZXIiLCJpYXQiOjE2ODIxMjk4OTEsImV4cCI6MTY4MjczNDY5MX0.l5_UqmFGVvphNIOjSFQGCQ8vfVtHbnfyD-sGVPn073I
+
+{
+    "surveyId": "2023",
+    "json": [{
+        "satisfaction-score": 5,
+        "nps-score": 10
+        }, {
+        "satisfaction-score": 5,
+        "nps-score": 9
+        }, {
+        "satisfaction-score": 3,
+        "nps-score": 6
+        }, {
+        "satisfaction-score": 3,
+        "nps-score": 6
+        }, {
+        "satisfaction-score": 2,
+        "nps-score": 3
+    }]
 }
 
 ###

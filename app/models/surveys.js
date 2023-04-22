@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 const SurveySchema = new Schema({
     name: String,
-    surveyId: String,
     json: Object
     
 }, {

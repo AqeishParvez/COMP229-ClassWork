@@ -62,6 +62,7 @@ import authRouter from '../app/routes/auth.js';
 import authAPIRouter from '../app/routes/api/auth-api.js';
 import moviesApiRouter from '../app/routes/api/movies-api.js';
 import surveysApiRouter from '../app/routes/api/survey-api.js';
+import surveyResultsRouter from '../app/routes/api/survey-results-api.js'
 
 //Complete database configuration
 mongoose.connect(MongoURI);
@@ -139,11 +140,13 @@ app.use('/', indexRouter);
 app.use('/', moviesRouter);
 app.use('/', businessContactsRouter);
 app.use('/', surveyRouter);
+app.use('/', surveyResultsRouter)
 app.use('/', authRouter);
 
 //Enable API Routes
 app.use('/api/auth', authAPIRouter);
 app.use('/api/movies', passport.authenticate('jwt', {success: false}), moviesApiRouter);
 app.use('/api/surveys', passport.authenticate('jwt', {success: false}), surveysApiRouter);
+app.use('/api/survey-results', passport.authenticate('jwt', {success: false}), surveyResultsRouter);
 
 export default app;
