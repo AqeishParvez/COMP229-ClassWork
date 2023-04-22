@@ -146,7 +146,7 @@ app.use('/', authRouter);
 //Enable API Routes
 app.use('/api/auth', authAPIRouter);
 app.use('/api/movies', passport.authenticate('jwt', {success: false}), moviesApiRouter);
-app.use('/api/surveys', passport.authenticate('jwt', {success: false}), surveysApiRouter);
-app.use('/api/survey-results', passport.authenticate('jwt', {success: false}), surveyResultsRouter);
+app.use('/api/surveys', surveysApiRouter);
+app.use('/api/survey-results', surveyResultsRouter);
 
 export default app;
