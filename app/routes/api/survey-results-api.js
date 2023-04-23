@@ -10,7 +10,7 @@ const router = Router();
 
 router.get('/list', GetList);
 router.get('/list/:id', GetMany);
-router.get('/:id', Get);
+router.get(':id', Get); //removed the backslash because it resulted in favicon error repeatidly
 router.post('/add', Add);
 router.put('/edit/:id', Edit);
 router.delete('/delete/:id', Delete);
